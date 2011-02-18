@@ -1,0 +1,49 @@
+WARNING - if this format is not followed correctly, SMTPD32 might not start. Update the smtpd32.acc file at your own risk.
+
+Note, even if the file is updated, STMPD32 only reads the file on startup.
+
+Version Stamp - DWORD (4 bytes) Currently 403 (0x0193)
+
+Locked Flag - DWORD (4 bytes) Not used - Set to 1 (locked)
+
+Lock ID - DWORD (4 bytes) Not used - Set to 14 (0x0E)
+
+Grant Flag - DWORD (4 bytes) Set to 1 for grant access, 0 for deny access.
+
+Size - DWORD (4 bytes) - Number of words in the table.
+
+Table entries - Each entry consists of 2 DWORDS (8 bytes).
+
+The first DWORD (4 bytes) is the IP, each octet stored in one byte from left to right. The IP 1.2.3.4 is stored as 01 02 03 04
+
+The second DWORD (4 bytes) is the mask. This is stored from left to right, with each octet stored in one byte. The IP 2.3.4.5 is stored as 02 03 04 05.
+
+The last table entry must consist of the address 0.0.0.0 and the mask of 255.255.255.255 (stored as 00 00 00 00 FF FF FF FF).
+
+So, for a standard ACC file that grants access to IP 1.2.3.4 the file would look like this (in Hex dump):
+
+93 01 00 00 01 00 00 00 0E 00 00 00 01 00 00 00
+
+04 00 00 00 01 02 03 04 FF FF FF FF 00 00 00 00
+
+FF FF FF FF
+
+Where:
+
+93 01 00 00 - Version Stamp
+
+01 00 00 00 - Locked flag
+
+0E 00 00 00 - Lock ID
+
+01 00 00 00 - Grant flag (granted access)
+
+04 00 00 00 - 4 words in the table (2 entries)
+
+01 02 03 04 - First entry IP (1.2.3.4)
+
+FF FF FF FF - First entry subnet mask (255.255.255.255)
+
+00 00 00 00 - Last entry IP (0.0.0.0)
+
+FF FF FF FF - Last entry subnet mask (255.255.255.255)
