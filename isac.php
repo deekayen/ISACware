@@ -4,7 +4,7 @@
  * IMail SMTP Access Control list maker
  *
  * This is shareware, so if you use this, and implement the
- * output file, please paypal some money to norny@yahoo.com.
+ * output file, please paypal some money to paypal@deekayen.net.
  * Just think how many hours it might have taken you to
  * engineer the output yourself and how nice it was to have
  * this already there to do it for you.
