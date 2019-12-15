@@ -32,7 +32,8 @@ sinokoreacidr.txt and countries.rbl information.
 
 
 How the Script Parses Input
-***************************
+----------------------
+
 Regardless of the file input, all parsed addresses are expected
 to be a Classless Inter-Domain Routing address (e.g. 192.168.1.0/24).
 
